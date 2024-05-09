@@ -4,7 +4,7 @@ Data Cleaning Process
 # AIM
 To read the given data and perform data cleaning and save the cleaned data to a file.
 
-# Explanationa
+# Explanation
 Data cleaning is the process of preparing data for analysis by removing or modifying data that is incorrect ,incompleted , irrelevant , duplicated or improperly formatted. Data cleaning is not simply about erasing data ,but rather finding a way to maximize datasets accuracy without necessarily deleting the information.
 
 # Algorithm
@@ -21,220 +21,228 @@ STEP 5: Remove outliers using IQR
 STEP 6: Use zscore of to remove outliers
 
 # Coding and Output
-## Data cleaning
-<table>
-  <tr>
-    <td width=50%>
-
-### 1) Read and display DataFrame
-```Python
+```
 import pandas as pd
-df=pd.read_csv("/content/SAMPLEIDS.csv")
+df=pd.read_csv('/content/SAMPLEIDS.csv')
 df
+df.head()
+df.tail()
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
+![Screenshot 2024-02-23 155627](https://github.com/LINGARAJA-L/exno1/assets/129825857/50f59bc4-854d-44ed-a5a7-58e2db4ed670)
 
-![Screenshot 2024-02-27 160011](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/374817ca-588d-4ce9-ad1b-8898275ff330)
-
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-              
-### 2) Display head
-```Python
-df.head(4)
 ```
-  </td>
-  <td>
-
-              
-#### OUTPUT:
-
-![Screenshot 2024-02-27 160858](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/7ff8dc08-e462-47de-90f6-3f15d23a7bc4)
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 3) Display tail
-```Python
-df.tail(4)
+df.info()
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
+![Screenshot 2024-02-23 155627](https://github.com/LINGARAJA-L/exno1/assets/129825857/c1652bc4-1221-43d7-9b43-caa041e9e504)
 
-![Screenshot 2024-02-27 160909](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/cc5835ee-8e45-4d9b-8186-a0a9555e5ee2)
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 4) Info of datafram
-```Python
-df.info(3)
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
-
-![Screenshot 2024-02-27 161613](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/bd98f185-b0f7-4aa0-aad5-34cf0de4f7ce)
-
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 5) Describe about the dataframe
-```Python
 df.describe()
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
+![Screenshot 2024-02-23 155639](https://github.com/LINGARAJA-L/exno1/assets/129825857/06daaaa1-c30f-4862-b074-d382efa80330)
 
-![Screenshot 2024-02-27 161734](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/1244543f-1efa-4de8-a814-193dac11da80)
-
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 6) Shape of the datafram
-```Python
+```
 df.shape
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
+![Screenshot 2024-02-23 155639](https://github.com/LINGARAJA-L/exno1/assets/129825857/3e10b016-b53b-42cc-8760-8dc37ce380a0)
 
-![Screenshot 2024-02-27 161817](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/3c12a861-c592-45d8-84e6-ef6711d22f74)
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 7) Checking tha NUll values
-```Python
+```
 df.isnull().sum()
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
-
-![Screenshot 2024-02-27 161904](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/89d06b3b-8d22-4de3-ac75-34294024389e)
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 8) Drop the Null values
-```Python
-df.nunique()
+![Screenshot 2024-02-23 155639](https://github.com/LINGARAJA-L/exno1/assets/129825857/fdd16109-48a7-43ca-9f24-0d33c7f1dd7f)
 
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
+x=df.dropna(how='any')
+x
+```
+![Screenshot 2024-02-23 155648](https://github.com/LINGARAJA-L/exno1/assets/129825857/d08986ef-512d-41db-96ea-3b361d394462)
 
-![Screenshot 2024-02-27 162113](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/836eb8b4-c9d7-447a-ab98-f541110f727d)
+```
+tot=df.dropna(subset=['TOTAL'],how='any')
+tot
+```
+![Screenshot 2024-02-23 155655](https://github.com/LINGARAJA-L/exno1/assets/129825857/0bab79c0-b06d-4fee-be85-62ecf39d9e30)
 
-</td>
-</tr>
-<tr>
-  <td width=50%>
+```
+df.fillna(0)
+```
+![Screenshot 2024-02-23 155709](https://github.com/LINGARAJA-L/exno1/assets/129825857/5dd90d31-5c22-4859-ba11-265eaa09bbb8)
 
-### 9) Finding the mean value
-```Python
+```
 mn=df.TOTAL.mean()
 mn
 ```
-  </td>
-  <td>
-              
-#### OUTPUT:
+![Screenshot 2024-02-23 155715](https://github.com/LINGARAJA-L/exno1/assets/129825857/f54a9796-7190-4ffa-9fba-ea52b144277d)
 
-![Screenshot 2024-02-27 171508](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/c4e865f3-9c77-4f1a-b03d-66e29cc36ba2)
-
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 10) Fill Null value with Mean value
-```Python
+```
 df.TOTAL.fillna(mn,inplace=True)
+for x in df.index:
+  if df.loc[x,"AVG"]>100:
+    df.drop(x,inplace=True)
 df
 ```
-  </td>
-  <td>
+![Screenshot 2024-02-23 155715](https://github.com/LINGARAJA-L/exno1/assets/129825857/ebeda40e-32f2-450d-a2fb-e4c2d1103d04)
+
+# Outlier Detection and Removal 
+## Coding and Output
+```Python
+import pandas as pd
+import seaborn as sns
+age=[1,3,28,27,25,92,30,39,40,50,26,24,29,94]
+dff=pd.DataFrame(age)
+dff
+```
               
 #### OUTPUT:
 
-![Screenshot 2024-02-27 171720](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/7616aa46-2fdf-45bf-a321-39b8e6e2b441)
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/28a59ebe-bdcc-4f04-93be-c29c353cdcb0)
+
+### 15) Boxplot
+```Python
+dsf=sns.boxplot(dff)
+```
+     
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/9876bce8-ef7f-49b2-8a97-114162113c71)
 
 
-</td>
-</tr>
-<tr>
-  <td width=50%>
+### 16) Scatterplot
+```Python
+dsf=sns.scatterplot(dff)
+```
+   
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/8144b619-8a24-44fd-a670-d317c88e81f9)
+
+
+
+### 17) IQR
+```Python
+q1=dff.quantile(0.25)
+q2=dff.quantile(0.5)
+q3=dff.quantile(0.75)
+iqr=q3-q1
+iqr
+```
+
+              
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/5ce6b72c-20d6-4542-a6ef-f607de82fc3d)
+
     
-### 11) Finding minimum value
+### 18) Checking the high and low value
 ```Python
-mn=df.M4.min()
-mn
+low=q1-1.5*iqr
+low
+high=q3+1.5*iqr
+high
 ```
-  </td>
-  <td>
+
               
 #### OUTPUT:
 
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/23185839-8632-43ee-bd1c-33da6ec53f9c)
 
-![Screenshot 2024-02-27 171831](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/7a7bf6ee-daa7-480a-ae1b-d67bebd22e2b)
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/aef8585c-4c27-4d68-a0cb-653026339b45)
 
 
-
-</td>
-</tr>
-<tr>
-  <td width=50%>
-
-### 12) Printing only Date of Birth
+    
+### 19) Filtering outlier value
 ```Python
-df['cd']=pd.to_datetime(df['DOB'])
-df['cd']
+dff=dff[((dff>=low)&(dff<=high))]
+dff
 ```
-  </td>
-  <td>
+     
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/a350867b-a6c0-4d3a-94fa-7e13b6874499)
+
+    
+### 20) Dropping the null value
+```Python
+dff.dropna()
+```
+
               
 #### OUTPUT:
 
-![Screenshot 2024-02-27 172720](https://github.com/BALUREDDYVELAYUDHAMGOWTHAM/exno1/assets/119559905/2da7285f-ead4-4a60-8bad-f430c407ee64)
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/e89a47bf-418b-4d60-9c75-f4e150bde470)
+
+
+    
+### 21) Box plotting after filtering outlier
+```Python
+sns.boxplot(data=dff)
+```
+     
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/b26c5fa9-3286-4299-a3e0-462659b72e6d)
+
+  
+### 22) Z Score
+```Python
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from scipy import stats
+data={'weight':[12,15,18,21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57,60,63,66,69,202,72, 75, 78, 81, 84, 232, 87, 90, 93,96,99,258]}
+ds=pd.DataFrame(data)
+ds
+```
+ 
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/c81cd121-42a2-4608-892b-33755423d018)
+
+### 23) Z Score
+```Python
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from scipy import stats
+data={'weight':[12,15,18,21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57,60,63,66,69,202,72, 75, 78, 81, 84, 232, 87, 90, 93,96,99,258]}
+ds=pd.DataFrame(data)
+ds
+```
+
+#### OUTPUT:
+
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/c81cd121-42a2-4608-892b-33755423d018)
+
+    
+### 24) Z Score
+```Python
+sns.boxplot(data=ds)
+```
+
+              
+#### OUTPUT:
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/a1afb418-e531-4eaa-9f0f-db5be7b0c20c)
+
+    
+ ### 25) Z Score
+```Python
+z=np.abs(stats.zscore(ds))
+z
+```
+   
+#### OUTPUT:
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/f52c84e7-00eb-4c8e-b5a7-653ea094ed1f)
 
 
 
-</td>
-</tr>
-<tr>
-  <td width=50%>
 
-# Result:
-  Thus the program for data cleaning using python has executed successfully.
+### 26)Z score 
+```Python
+print(ds[z['weight']>3])
+```
+
+
+#### OUTPUT:
+![image](https://github.com/LATHIKESHWARAN/exno1/assets/119393556/5deaf50a-9342-48f4-ae99-1cc751d39320)
+
+# Result
+The data clearning has beeen done successfully.
